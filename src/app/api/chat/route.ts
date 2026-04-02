@@ -37,9 +37,21 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(apiKey);
     const { messages } = await req.json();
 
-    // 가장 최근 질문으로 관련 경험 검색
     const latestMessage = messages[messages.length - 1].content
     const { context, score } = await retrieveContext(genAI, latestMessage)
+
+    // Analytics: log save
+    supabase
+      .from('interview_analytics')
+      .insert([
+        {
+          question: latestMessage,
+          similarity_score: score,
+        },
+      ])
+      .then(({ error }) => {
+        if (error) console.error('Failed to log analytics:', error);
+      });
 
     const systemPrompt = `
 	당신은 신입 개발자 '김서현'의 AI 페르소나입니다.
@@ -114,7 +126,7 @@ export async function POST(req: Request) {
       },
     });
 
-    // 신뢰도 점수를 헤더에 포함하여 반환
+    // return similarity score
     return new Response(stream, {
       headers: {
         'X-Similarity-Score': score.toString(),

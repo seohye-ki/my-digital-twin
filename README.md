@@ -8,6 +8,9 @@
 
 신입 개발자의 경험과 기술 스택을 바탕으로 한 **AI 기반 디지털 트윈** 프로젝트입니다. 면접관이 실시간으로 대화하고 개발자의 역량을 검증할 수 있는 인터랙티브한 경험을 제공합니다.
 
+<img width="1403" height="878" alt="Image" src="https://github.com/user-attachments/assets/8cc1f400-4c68-4a98-9f43-d42ac4297a14" />
+<img width="1190" height="887" alt="Image" src="https://github.com/user-attachments/assets/7c15d238-8d97-4783-80a0-793259b65038" />
+
 ## ✨ 핵심 기능
 
 -   **🤖 AI 페르소나 (Gemini 2.5 Flash)**: 김서현 개발자의 정체성과 가치관을 학습한 AI가 1인칭으로 답변하며, 일관된 답변 원칙을 유지합니다.
@@ -23,52 +26,6 @@
 -   **AI Services**: Google Gemini AI (LLM & Embeddings), ElevenLabs (TTS)
 -   **Database**: Supabase (PostgreSQL with pgvector)
 -   **Styling & Components**: Lucide React, Framer Motion
-
-## 🚀 시작하기
-
-### 사전 준비 사항
-
--   Node.js 18.x 이상
--   Google Gemini API Key
--   ElevenLabs API Key 및 Voice ID
--   Supabase 프로젝트 (pgvector 확장 활성화 필요)
-
-### 환경 변수 설정
-
-루트 디렉토리에 `.env.local` 파일을 생성하고 아래 내용을 입력하세요:
-
-```env
-# Google Gemini
-GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
-
-# ElevenLabs
-ELEVENLABS_API_KEY=your_elevenlabs_api_key
-ELEVENLABS_VOICE_ID=your_voice_id
-
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-```
-
-### 설치 및 실행
-
-1.  저장소 클론:
-    ```bash
-    git clone https://github.com/your-username/my-digital-twin.git
-    cd my-digital-twin
-    ```
-2.  의존성 설치:
-    ```bash
-    npm install
-    ```
-3.  지식 베이스 구축 (선택 사항):
-    ```bash
-    npm run embed
-    ```
-4.  개발 서버 실행:
-    ```bash
-    npm run dev
-    ```
 
 ## 📂 프로젝트 구조
 

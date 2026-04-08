@@ -57,7 +57,7 @@ export function InterviewProvider({ children }: { children: ReactNode }) {
   const [isInputLocked, setIsInputLocked] = useState(false);
   const [currentSubtitle, setcurrentSubtitle] = useState('');
   const [reliability, setReliability] = useState<number | null>(null);
-  const [isTtsActive, setIsTtsActive] = useState(false);
+  const [isTtsActive, setIsTtsActive] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isSubtitleReady, setIsSubtitleReady] = useState(false);
   const [isEnding, setIsEnding] = useState(false);
@@ -326,7 +326,7 @@ export function InterviewProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (isCompleted || isEnding || showEndConfirmation) return;
     if (time >= 600 || questionCount >= 5) {
-      setIsCompleted(true);
+      finishInterview();
     }
   }, [time, questionCount, isCompleted, isEnding, showEndConfirmation]);
 

@@ -243,7 +243,7 @@ export function InterviewProvider({ children }: { children: ReactNode }) {
         assistantContent += chunk;
         setMessages([...updatedMessages, { role: 'model', content: assistantContent }]);
       }
-      speak(assistantContent);
+      await speak(assistantContent);
     } catch (error) {
       console.error('Chat error:', error);
       setMessages([...updatedMessages, { role: 'model', content: '죄송합니다. 오류가 발생했습니다.' }]);
@@ -322,13 +322,14 @@ export function InterviewProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(timer);
   }, [isCompleted, isEnding]);
 
-  // Auto-termination logic
+  // Auto-termination logic: Triggers when time limit or question limit is reached.
+  // We wait until isAiLoading and isSpeaking are false to ensure the current response finishes first.
   useEffect(() => {
-    if (isCompleted || isEnding || showEndConfirmation) return;
+    if (isCompleted || isEnding || showEndConfirmation || isAiLoading || isSpeaking) return;
     if (time >= 600 || questionCount >= 5) {
       finishInterview();
     }
-  }, [time, questionCount, isCompleted, isEnding, showEndConfirmation]);
+  }, [time, questionCount, isCompleted, isEnding, showEndConfirmation, isAiLoading, isSpeaking]);
 
   // Caption effect
   useEffect(() => {

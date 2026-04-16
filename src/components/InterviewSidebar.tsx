@@ -40,16 +40,28 @@ export default function InterviewSidebar() {
           </div>
           
           <div className="flex-1 overflow-y-auto p-6 scroll-smooth custom-scrollbar">
-            <div className="space-y-3">
-              {RECOMMENDED_QUESTIONS.map((q: string, idx: number) => (
-                <button
-                  key={idx}
-                  onClick={() => handleQuestionClick(q)}
-                  disabled={isAiLoading || isSpeaking || isInputLocked}
-                  className="w-full text-left p-4 rounded-2xl border border-slate-100 bg-white text-[13px] font-bold leading-relaxed text-slate-600 shadow-sm transition-all hover:border-blue-200 hover:bg-blue-50/30 hover:text-blue-600 active:scale-[0.98] disabled:opacity-50"
-                >
-                  <span>{q}</span>
-                </button>
+            <div className="space-y-8">
+              {RECOMMENDED_QUESTIONS.map((group, groupIdx) => (
+                <div key={groupIdx} className="space-y-3">
+                  <div className="flex items-center gap-2 px-1">
+                    <div className="h-1 w-1 rounded-full bg-blue-400" />
+                    <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      {group.category}
+                    </h3>
+                  </div>
+                  <div className="space-y-2">
+                    {group.questions.map((q: string, qIdx: number) => (
+                      <button
+                        key={`${groupIdx}-${qIdx}`}
+                        onClick={() => handleQuestionClick(q)}
+                        disabled={isAiLoading || isSpeaking || isInputLocked}
+                        className="w-full text-left p-4 rounded-2xl border border-slate-100 bg-white text-[13px] font-bold leading-relaxed text-slate-600 shadow-sm transition-all hover:border-blue-200 hover:bg-blue-50/30 hover:text-blue-600 active:scale-[0.98] disabled:opacity-50"
+                      >
+                        <span>{q}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

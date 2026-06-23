@@ -114,8 +114,8 @@ export default function InterviewControls() {
       </div>
 
       <div className="flex flex-col items-center gap-1 opacity-80 text-center">
-        <p className="text-[9px] font-bold text-slate-400 tracking-[0.3em] uppercase">
-          본 인터페이스의 보이스는 김서현의 음성을 클로닝하였습니다.
+        <p className="text-[9px] font-bold text-slate-400 tracking-[0.2em] uppercase">
+          본 서비스는 김서현의 프로젝트 데이터와 가치관을 기반으로 답변합니다.
         </p>
       </div>
     </div>
